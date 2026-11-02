@@ -1,0 +1,11 @@
+Options -Indexes -MultiViews
+DirectoryIndex index.php
+RewriteEngine On
+# Protect internal files before serving existing files or handling routes.
+RewriteRule ^(?:app|templates|storage|bin|tests|reference)(?:/|$) - [F,END,NC]
+RewriteRule (^|/)\. - [F,END]
+<FilesMatch "(?i)^(?:config(?:\.example)?\.php|INSTALL-PPES\.txt)$|\.(?:sqlite(?:3)?(?:-wal|-shm)?|db|sql|log|bak|backup|env)$">
+Require all denied
+</FilesMatch>
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [END]

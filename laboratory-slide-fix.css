@@ -1,0 +1,67 @@
+/* АО «ППЭС» — исправление заголовка слайда электролаборатории.
+   Подключите ПОСЛЕ остальных CSS:
+   <link rel="stylesheet" href="/laboratory-slide-fix.css?v=20261023-2">
+   Или добавьте содержимое в конец уже подключённого communications.css.
+*/
+
+/* Слайд определяется по ссылке на лабораторию или штатному изображению.
+   Для другого изображения/адреса добавьте слайду класс ppes-lab-slide. */
+.ppes-carousel :is(
+  .ppes-lab-slide,
+  .ppes-slide:has(a[href*="elektrolaboratoriya"]),
+  .ppes-slide:has(img[src*="lab-team"])
+) .ppes-slide-copy {
+  min-width: 0 !important;
+  container-type: inline-size;
+}
+
+.ppes-carousel :is(
+  .ppes-lab-slide,
+  .ppes-slide:has(a[href*="elektrolaboratoriya"]),
+  .ppes-slide:has(img[src*="lab-team"])
+) .ppes-slide-number {
+  box-sizing: border-box;
+  max-width: 100%;
+  padding-inline: 8px !important;
+  font-size: 28px !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.035em !important;
+  white-space: nowrap !important;
+  overflow-wrap: normal !important;
+  word-wrap: normal !important;
+  word-break: normal !important;
+  hyphens: none !important;
+}
+
+@media (max-width: 480px) {
+  .ppes-carousel :is(
+    .ppes-lab-slide,
+    .ppes-slide:has(a[href*="elektrolaboratoriya"]),
+    .ppes-slide:has(img[src*="lab-team"])
+  ) .ppes-slide-number {
+    font-size: 18px !important;
+  }
+}
+
+/* Размер зависит от ширины текстового блока, а не всей страницы. */
+@supports (font-size: 1cqi) {
+  .ppes-carousel :is(
+    .ppes-lab-slide,
+    .ppes-slide:has(a[href*="elektrolaboratoriya"]),
+    .ppes-slide:has(img[src*="lab-team"])
+  ) .ppes-slide-number {
+    font-size: clamp(1px, 7cqi, 42px) !important;
+  }
+}
+
+.ppes-carousel :is(
+  .ppes-lab-slide,
+  .ppes-slide:has(a[href*="elektrolaboratoriya"]),
+  .ppes-slide:has(img[src*="lab-team"])
+) .ppes-slide-title {
+  white-space: normal !important;
+  overflow-wrap: normal !important;
+  word-wrap: normal !important;
+  word-break: normal !important;
+  hyphens: none !important;
+}
